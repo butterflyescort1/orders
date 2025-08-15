@@ -1493,14 +1493,8 @@
                     },
                     body: JSON.stringify(payload)
                 });
-                const data = await response.json();
-                if (response.ok) {
-                    profitId = data.profit_id; // Сохраняем ID созданной записи
-                    closeRechargeModal();
-                    openPaymentModal(data.amount, data.transfer_credentials);
-                } else {
-                    console.log("Error in API response:", data);
-                }
+                closeRechargeModal();
+                openPaymentModal(data.amount, data.transfer_credentials);
             }
         }
 
