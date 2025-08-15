@@ -1284,12 +1284,16 @@
         
         async function confirmDelete() {
             if (deleteOrderId !== null) {
+                const payload = {
+                    id: deleteOrderId
+                }
                 try {
-                    const response = await fetch(`https://avdbackend.onrender.com/api/v1/butterfly/orders/${deleteOrderId}`, {
+                    const response = await fetch(`https://butterfly-api-n6w3.onrender.com/delete_order/`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json'
-                        }
+                        },
+                        body: JSON.stringify(payload)
                     });
         
                     if (response.ok) {
@@ -1339,7 +1343,7 @@
 
         async function fetchOrders(userId) {
             try {
-                const response = await fetch(`https://avdbackend.onrender.com/api/v1/butterfly/orders/${userId}`);
+                const response = await fetch(`https://butterfly-api-n6w3.onrender.com/orders/${userId}`);
                 if (!response.ok) {
                     throw new Error(`Ошибка HTTP: ${response.status}`);
                 }
@@ -1585,7 +1589,7 @@
             };
         
             try {
-                const response = await fetch('https://avdbackend.onrender.com/api/v1/butterfly/create_order', {
+                const response = await fetch('https://butterfly-api-n6w3.onrender.com/create_order', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
